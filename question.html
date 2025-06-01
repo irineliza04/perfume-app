@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Perfume Questionnaire</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="container">
+    <h2>{{ prompt }}</h2>
+    <form method="POST" action="{{ url_for('question', q=question) }}">
+      <input type="text" name="answer" placeholder="Your answer here" required>
+      <button type="submit">Next</button>
+    </form>
+  </div>
+</body>
+</html>

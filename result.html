@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Your Perfume Recommendation</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <style>
+    /* Inline theming based on the gender choice */
+    body {
+      background-color: {{ theme }};
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Your Perfume Recommendation</h1>
+    {% if recommendation.error %}
+      <p>{{ recommendation.error }}</p>
+    {% elif recommendation.message %}
+      <p>{{ recommendation.message }}</p>
+    {% elif recommendation.get('Custom Perfume') %}
+      <p>{{ recommendation['Custom Perfume'] }}</p>
+    {% else %}
+      <h2>{{ recommendation['Brand'] }} - {{ recommendation['Perfume Name'] }}</h2>
+      <p><strong>Scent Profile:</strong> {{ recommendation['Scent Profile'] }}</p>
+      <p><strong>Occasion:</strong> {{ recommendation['Occasion'] }}</p>
+      <p><strong>Main Notes:</strong> {{ recommendation['Main 3 Notes'] }}</p>
+      <p><strong>Personality / Mood:</strong> {{ recommendation['Personality / Mood'] }}</p>
+    {% endif %}
+
+    <h3>Your Answers</h3>
+    <ul>
+      {% for key, value in answers.items() %}
+        <li><strong>{{ key.capitalize() }}:</strong> {{ value }}</li>
+      {% endfor %}
+    </ul>
+    <a href="{{ url_for('index') }}">Start Over</a>
+  </div>
+</body>
+</html>

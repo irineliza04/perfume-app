@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Perfume Recommendation</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="container">
+    <h1>Welcome to the Perfume Quiz</h1>
+    <p>Answer a few questions to find your perfect perfume match.</p>
+    <form method="POST" action="{{ url_for('index') }}">
+      <button type="submit">Start Questionnaire</button>
+    </form>
+  </div>
+</body>
+</html>
